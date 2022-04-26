@@ -3,8 +3,11 @@
 
 # Prerequisites
 Python 3.8.10
+
 Apache Airflow 2.2.5
+
 Apache Spark 3.2.1
+
 Kaggle API 1.5.12
 
 # Installation
