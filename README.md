@@ -38,3 +38,8 @@ download 이후의 dataframe :
 ![캡처](https://user-images.githubusercontent.com/70638465/165229806-ead688ba-c8f4-4e5e-9a95-06fbb741332a.jpg)
 processing 이후의 dataframe : 
 ![캡처](https://user-images.githubusercontent.com/70638465/165229941-1b730e81-68a6-4f11-b83f-c29c9a91c8f0.jpg)
+
+
+# 영화 추천 알고리즘
+
+colab/data_analysis.ipynb 참고 
