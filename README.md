@@ -1,5 +1,5 @@
 # movie dataset을 이용한 데이터 처리 및 영화 추천
-12이 프로젝트의 목적은 movie 데이터셋을 이용해서 airflow의 dag를 만들어보고, 하는 과정입니다.
+이 프로젝트의 목적은 movie 데이터셋을 이용해서 airflow의 dag를 만들어보고, 하는 과정입니다.
 
 # Prerequisites
 Python 3.8.10
