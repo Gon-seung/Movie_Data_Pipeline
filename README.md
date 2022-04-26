@@ -14,8 +14,8 @@ Kaggle API 1.5.12
 Python, Airflow, Spark, Kaggle을 설치한다.
 
 -portfolio.py : pipeline을 구축한 파일
-https://www.kaggle.com/ 에서 account -> kaggle api를 다운받은 후에 kaggle.json 파일을 root/.kaggle/에 이동한다.
 
+https://www.kaggle.com/ 에서 account -> kaggle api를 다운받은 후에 kaggle.json 파일을 root/.kaggle/에 이동한다.
 airflow scheduler, airflow webserver를 실행시키면 portfolio.py을 실행할 수가 있다. 
 
 -data_analysis.py : movie_dataset을 데이터 분석한 파일
