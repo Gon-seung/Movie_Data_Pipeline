@@ -15,9 +15,11 @@ Python, Airflow, Spark, Kaggle을 설치한다.
 
 -portfolio.py : pipeline을 구축한 파일
 https://www.kaggle.com/ 에서 account -> kaggle api를 다운받은 후에 kaggle.json 파일을 root/.kaggle/에 이동한다.
+
 airflow scheduler, airflow webserver를 실행시키면 portfolio.py을 실행할 수가 있다. 
 
 -data_analysis.py : movie_dataset을 데이터 분석한 파일
+
 colab에서 실행하면 된다.
 
 # Pipeline
@@ -25,7 +27,9 @@ colab에서 실행하면 된다.
 ![캡처](https://user-images.githubusercontent.com/70638465/165226686-c1049ef6-d1ba-4d27-bd05-49c81c6558cc.jpg)
 
 download에서는 kaggle에서 데이터를 다운받는 과정을,
+
 processing은 데이터를 가공해서 새롭게 저장하는 과정을,
+
 end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
 
 데이터 원본 : https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
