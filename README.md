@@ -26,8 +26,8 @@ processing은 데이터를 가공해서 새롭게 저장하는 과정을,
 end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
 
 데이터 원본 : https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
+
 download 이후의 dataframe : 
 ![캡처](https://user-images.githubusercontent.com/70638465/165229806-ead688ba-c8f4-4e5e-9a95-06fbb741332a.jpg)
 processing 이후의 dataframe : 
 ![캡처](https://user-images.githubusercontent.com/70638465/165229941-1b730e81-68a6-4f11-b83f-c29c9a91c8f0.jpg)
-
