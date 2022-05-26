@@ -23,14 +23,24 @@ airflow scheduler, airflow webserver를 실행시키면 portfolio.py을 실행�
 colab에서 실행하면 된다.
 
 # Pipeline
-3개의 과정으로 이루어져 있다.
-![캡처](https://user-images.githubusercontent.com/70638465/165226686-c1049ef6-d1ba-4d27-bd05-49c81c6558cc.jpg)
 
-download에서는 kaggle에서 데이터를 다운받는 과정을,
+![화면 캡처 2022-05-26 140723](https://user-images.githubusercontent.com/70638465/170420023-bb61b51a-1a76-44e7-ba86-9fac082dca30.jpg)
 
-processing은 데이터를 가공해서 새롭게 저장하는 과정을,
 
-end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
+다음과 같은 과정으로 이루어져 있다.
+
+1. download_movie에서는 kaggle에서 movie 데이터를 다운받는 과정을,
+
+2. download_rating에서는 kaggle에서 rating 데이터를 다운받는 과정을,
+
+3. print_time에서는 다운받는 시간을 출력하는 과정을,
+
+4. processing_movie은 movie 데이터를 가공해서 새롭게 저장하는 과정을,
+
+5. processing_rating은 rating 데이터를 가공해서 새롭게 저장하는 과정을,
+
+6. end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
+
 
 데이터 원본 : https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
 
@@ -41,5 +51,7 @@ processing 이후의 dataframe :
 
 
 # 영화 추천 알고리즘
+
+가공된 데이터를 통해서 영화 데이터셋을 분석하고 추천 알고리즘을 작성한 방식이다.
 
 colab/data_analysis.ipynb 참고 
