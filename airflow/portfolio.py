@@ -13,8 +13,11 @@ from pathlib import Path
 from pyspark.sql.functions import *
 from pyspark.sql import SparkSession
 from ast import literal_eval
+import time
 
-def _download_data():
+def _download_movie_data(**context):
+
+    start = time.time()
     #kaggle로부터 데이터 다운받기
     data_path = Path(gettempdir()) / 'movies_metadata' / 'movies_metadata.csv'
 
@@ -24,6 +27,22 @@ def _download_data():
     print(df.size)
     print(df.head(3))
     df.to_csv('movies_metadata.csv', index=False)
+    context['task_instance'].xcom_push(key='down_movie_time', value= time.time() - start)
+
+def _download_rating_data(**context):
+
+    start = time.time()
+    #kaggle로부터 데이터 다운받기
+    data_path = Path(gettempdir()) / 'movies_metadata' / 'ratings_small.csv'
+
+    kaggle.authenticate()
+    kaggle.dataset_download_files('rounakbanik/the-movies-dataset', data_path.parent, unzip=True)
+    df = pd.read_csv(data_path, index_col=0)
+    print(df.size)
+    print(df.head(3))
+    df.to_csv('ratings.csv', index=False)
+    context['task_instance'].xcom_push(key='down_rating_time', value= time.time() - start)
+
 
 def data_processing():
     #csv 파일을 spark dataframe 형태로 불러오기
@@ -51,7 +70,6 @@ def data_processing():
     print((file_df.count(), len(file_df.columns)))
 
     #genres, collection을 dict 형태에서 list형태로 변환, 데이터 처리 후 Dataframe 확인
-
     def get_genres(x):
         x = literal_eval(x)
         answer = []
@@ -74,8 +92,23 @@ def data_processing():
     func_udf = udf(get_collection, StringType())
     file_df = file_df.withColumn("belongs_to_collection", func_udf(file_df["belongs_to_collection"]))
     print(file_df.orderBy(col("id").asc()).show(10))
-    file_df.coalesce(1).write.csv("movie_metadata_process")
+    file_df.coalesce(1).write.csv("movie_folder")
     
+def print_time(**context):
+    print("check_time")
+    down_time1 = context["task_instance"].xcom_pull(key='down_movie_time')
+    down_time2 = context["task_instance"].xcom_pull(key='down_rating_time')
+    print("download time : ",down_time1 + down_time2)
+
+def data_processing_rating():
+    sc = SparkSession.builder.master('local[*]').appName('hello').getOrCreate()
+    rating_df = sc.read.csv('./ratings.csv', header = True)
+    print(rating_df.head(10))
+    print((rating_df.count(), len(rating_df.columns)))
+
+    rating_df = rating_df.drop('timestamp')
+    rating_df.show(10)
+    rating_df.coalesce(1).write.csv("rating_folder")
 
 with DAG(
     'portfolio',
@@ -95,14 +128,13 @@ with DAG(
 ) as dag:
 
     t1 = PythonOperator(
-        task_id='download',
-        python_callable = _download_data,
+        task_id='download_movie',
+        python_callable = _download_movie_data,
     )
 
     t2 = PythonOperator(
-        task_id='processing',
+        task_id='processing_movie',
         python_callable = data_processing,
-        retries=3,
     )
 
 
@@ -114,10 +146,25 @@ with DAG(
     """
     )
 
-    t3 = BashOperator(
+    t3 = PythonOperator(
+        task_id='print_time',
+        python_callable = print_time,
+    )
+
+    t4 = BashOperator(
         task_id='end',
         depends_on_past=False,
         bash_command=templated_command,
     )
+    
+    t5 = PythonOperator(
+        task_id='processing_rating',
+        python_callable=data_processing_rating,
+    )
 
-    t1 >> t2 >> t3
+    t6 = PythonOperator(
+        task_id='download_rating',
+        python_callable=_download_rating_data,
+    )
+
+    [t1 , t6] >> t3 >> [t2, t5] >> t4
