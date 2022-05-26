@@ -1,0 +1,42 @@
+*** Reading local file: /root/airflow/logs/portfolio/processing_rating/2022-05-26T03:45:17.320180+00:00/1.log
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: portfolio.processing_rating manual__2022-05-26T03:45:17.320180+00:00 [queued]>
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1043} INFO - Dependencies all met for <TaskInstance: portfolio.processing_rating manual__2022-05-26T03:45:17.320180+00:00 [queued]>
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1249} INFO - 
+--------------------------------------------------------------------------------
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1250} INFO - Starting attempt 1 of 2
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1251} INFO - 
+--------------------------------------------------------------------------------
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1270} INFO - Executing <Task(PythonOperator): processing_rating> on 2022-05-26 03:45:17.320180+00:00
+[2022-05-26, 21:54:35 KST] {standard_task_runner.py:52} INFO - Started process 16895 to run task
+[2022-05-26, 21:54:35 KST] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'portfolio', 'processing_rating', 'manual__2022-05-26T03:45:17.320180+00:00', '--job-id', '219', '--raw', '--subdir', '/usr/local/lib/python3.8/dist-packages/airflow/example_dags/portfolio.py', '--cfg-path', '/tmp/tmprtd4b_xf', '--error-file', '/tmp/tmpsgdeju4h']
+[2022-05-26, 21:54:35 KST] {standard_task_runner.py:80} INFO - Job 219: Subtask processing_rating
+[2022-05-26, 21:54:35 KST] {logging_mixin.py:109} INFO - Running <TaskInstance: portfolio.processing_rating manual__2022-05-26T03:45:17.320180+00:00 [running]> on host LAPTOP-FB8H3NSS.localdomain
+[2022-05-26, 21:54:35 KST] {taskinstance.py:1446} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=airflow@example.com
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=portfolio
+AIRFLOW_CTX_TASK_ID=processing_rating
+AIRFLOW_CTX_EXECUTION_DATE=2022-05-26T03:45:17.320180+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-05-26T03:45:17.320180+00:00
+[2022-05-26, 21:54:42 KST] {logging_mixin.py:109} INFO - [Row(movieId='31', rating='2.5', timestamp='1260759144'), Row(movieId='1029', rating='3.0', timestamp='1260759179'), Row(movieId='1061', rating='3.0', timestamp='1260759182'), Row(movieId='1129', rating='2.0', timestamp='1260759185'), Row(movieId='1172', rating='4.0', timestamp='1260759205'), Row(movieId='1263', rating='2.0', timestamp='1260759151'), Row(movieId='1287', rating='2.0', timestamp='1260759187'), Row(movieId='1293', rating='2.0', timestamp='1260759148'), Row(movieId='1339', rating='3.5', timestamp='1260759125'), Row(movieId='1343', rating='2.0', timestamp='1260759131')]
+[2022-05-26, 21:54:43 KST] {logging_mixin.py:109} INFO - (100004, 3)
+[2022-05-26, 21:54:43 KST] {logging_mixin.py:109} INFO - +-------+------+
+|movieId|rating|
++-------+------+
+|     31|   2.5|
+|   1029|   3.0|
+|   1061|   3.0|
+|   1129|   2.0|
+|   1172|   4.0|
+|   1263|   2.0|
+|   1287|   2.0|
+|   1293|   2.0|
+|   1339|   3.5|
+|   1343|   2.0|
++-------+------+
+only showing top 10 rows
+[2022-05-26, 21:54:43 KST] {logging_mixin.py:109} INFO - 
+[2022-05-26, 21:54:44 KST] {python.py:175} INFO - Done. Returned value was: None
+[2022-05-26, 21:54:44 KST] {taskinstance.py:1278} INFO - Marking task as SUCCESS. dag_id=portfolio, task_id=processing_rating, execution_date=20220526T034517, start_date=20220526T035435, end_date=20220526T035444
+[2022-05-26, 21:54:44 KST] {local_task_job.py:154} INFO - Task exited with return code 0
+[2022-05-26, 21:54:44 KST] {local_task_job.py:264} INFO - 1 downstream tasks scheduled from follow-on schedule check
