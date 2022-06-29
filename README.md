@@ -22,9 +22,13 @@ airflow scheduler, airflow webserver를 실행시키면 portfolio.py을 실행�
 
 colab에서 실행하면 된다.
 
+# 코드
+
+https://github.com/Gon-seung/portfolio/blob/main/airflow/portfolio.py
+
 # Pipeline
 
-![화면 캡처 2022-05-26 140723](https://user-images.githubusercontent.com/70638465/170420023-bb61b51a-1a76-44e7-ba86-9fac082dca30.jpg)
+![image](https://user-images.githubusercontent.com/70638465/176370936-8583f3a4-c9ca-4311-840e-574b54773060.png)
 
 
 다음과 같은 과정으로 이루어져 있다.
@@ -35,11 +39,13 @@ colab에서 실행하면 된다.
 
 3. print_time에서는 다운받는 시간을 출력하는 과정을,
 
-4. processing_movie은 movie 데이터를 가공해서 새롭게 저장하는 과정을,
+4. del_not_require은 spark를 이용해서 필요없는 데이터를 제거하는 과정을,
 
-5. processing_rating은 rating 데이터를 가공해서 새롭게 저장하는 과정을,
+5. processing_movie은 movie 데이터를 가공해서 영화의 점수, 해당 영화와 비슷한 영화의 데이터를 추가하는 과정을,
 
-6. end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
+6. upload_data은 데이터를 cloud에 저장하는 과정을,
+
+7. end는 과정이 끝났음을 확인하기 위해서 print문을 넣은 과정이다.
 
 
 데이터 원본 : https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
@@ -50,8 +56,10 @@ processing 이후의 dataframe :
 ![캡처](https://user-images.githubusercontent.com/70638465/165229941-1b730e81-68a6-4f11-b83f-c29c9a91c8f0.jpg)
 
 
-# 영화 추천 알고리즘
+# 데이터 시각화
 
-가공된 데이터를 통해서 영화 데이터셋을 분석하고 추천 알고리즘을 작성한 방식이다.
+가공된 데이터를 통해서 영화 데이터셋을 분석한 것이다.
+
+https://github.com/Gon-seung/portfolio/blob/main/airflow/portfolio.py
 
 colab/data_analysis.ipynb 참고 
