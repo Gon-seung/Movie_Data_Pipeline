@@ -10,3 +10,8 @@
 4. 저장소
     - 15 Gib
 
+## hadoop 설정
+1. version
+    - 3.2.3
+2. 구성
+    - namenode1, datanode1, datanode2
